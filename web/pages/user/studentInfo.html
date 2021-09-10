@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息</title>
+    <base href="http://localhost:8080/project/">
+    <script type="text/javascript" src="script/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $(document).ready(function (){
+                $.ajax({
+                    url:"http://localhost:8080/project/studentServlet",
+                    data:"action=list",
+                    type:"POST",
+                    dataType:"json",
+                    success:function(data){
+                        let courses = data;
+                        for(let i in courses){
+                            let course = courses[i];
+                            let td1 = $("<td>"+course.id+"</td>");
+                            let td2 = $("<td>"+course.cname+"</td>");
+                            let td3 = $("<td>"+course.time+"</td>");
+                            let td4 = $("<td>"+course.teacher+"</td>");
+                            let td5 = $("<td>"+course.classroom+"</td>");
+                            let td6 = $("<td>"+course.stunum+"</td>");
+                            let td7 = $("<td>"+course.maxnum+"</td>");
+                            let td8 = $("<td><form method='POST' action='studentServlet'><input type='hidden' name='action' value='doNotChooseCourse'><input type='hidden' name='id' value='"+course.id+"'><input type='submit' value='退选'></form></td>");
+                            let tr = $("<tr></tr>");
+                            $(tr).append(td1).append(td2).append(td3).append(td4).append(td5).append(td6).append(td7).append(td8);
+                            $("#tab").append(tr)
+                        }
+                    }
+                })
+            })
+        });
+
+    </script>
+</head>
+<body>
+<tr>
+    <table id="tab">
+        <tr>
+            <td>编号</td>
+            <td>课程</td>
+            <td>时间</td>
+            <td>教师</td>
+            <td>课室</td>
+            <td>已选</td>
+            <td>人数</td>
+            <td>退选</td>
+        </tr>
+    </table>
+</tr>
+</body>
+</html>

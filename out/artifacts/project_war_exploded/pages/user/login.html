@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>登录教务管理系统</title>
+	<base href="http://localhost:8080/project/">
+	<script type="text/javascript" src="script/jquery-3.5.1.js"></script>
+	<script type="text/javascript">
+		$(function (){
+			$("#sub").click(function (){
+				let id = $("#id").val();
+				let password = $("#password").val();
+				if(id == "" || password == ""){
+					alert('请输入学号密码')
+					return false
+				}else {
+					return true;
+				}
+			})
+		})
+	</script>
+</head>
+
+<body>
+	<form action="studentServlet" method="post" id="form">
+		<input type="hidden" name="action" value="login">
+		<table align="center">
+			<tr>
+				<td>学号/工号：</td>
+				<td><input type="number" name="id" id="id"></td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td><input type="password" name="password" id="password"></td>
+			</tr>
+			<tr>
+				<td><select name="usertype">
+					<option value=0>学生</option>
+					<option value=1>教师</option>
+					<option value=2>管理员</option>
+				</select>
+				</td>
+				<td><input type="submit" value="登录" id="sub"></td>
+			</tr>
+		</table>
+
+	</form>
+</body>
+</html>

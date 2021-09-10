@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加课程</title>
+    <base href="http://localhost:8080/project/">
+</head>
+<body>
+    <form method="post" action="teacherServlet">
+        <input type="hidden" name="action" value="addCourse">
+        <table>
+            <tr>
+                <td>课程名：</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>时间段</td>
+                <td><select name="time">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>最大学生数</td>
+                <td><input type="number" name="maxstu"></td>
+            </tr>
+            <tr>
+                <td>教室</td>
+                <td><input type="text" name="classroom"></td>
+            </tr>
+            <tr><td><input type="submit" value="确认"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
