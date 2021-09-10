@@ -16,8 +16,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void changePassword(int id, String password, String newPassword) {
-        studentDao.studentChangePassword(id,password,newPassword);
+    public int changePassword(int id, String password, String newPassword) {
+        return studentDao.studentChangePassword(id,password,newPassword);
     }
 
     @Override

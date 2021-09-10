@@ -19,7 +19,7 @@ public interface StudentService {
      * @param password
      * @param newPassword
      */
-    public void changePassword(int id, String password, String newPassword);
+    public int changePassword(int id, String password, String newPassword);
 
     /**
      * 选课

@@ -62,6 +62,7 @@ public class CourseServlet extends BaseServlet{
                 System.out.println("失败");
             }else{
                 courseService.doNotChooseCourse(id);
+                req.getSession().setAttribute("user",studentService.studentLogin(new Students(student.getId(),null,student.getPassword(),0,0)));
             }
         }else{
             System.out.println("失败");

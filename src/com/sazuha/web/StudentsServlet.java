@@ -72,7 +72,6 @@ public class StudentsServlet extends BaseServlet {
     protected void doNotChooseCourse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Students student = (Students) req.getSession().getAttribute("user");
         StudentService studentService = new StudentServiceImpl();
-        System.out.println(student);
 
         int id = Integer.parseInt(req.getParameter("id"));
         Course course = courseService.searchCourseById(id);
@@ -89,4 +88,13 @@ public class StudentsServlet extends BaseServlet {
         resp.sendRedirect("/project/pages/user/student.html");
 
     }
+
+    protected void changePassword(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Students student = (Students) req.getSession().getAttribute("user");
+        StudentService studentService = new StudentServiceImpl();
+
+        studentService.changePassword(student.getId(),req.getParameter("password"),req.getParameter("newPassword"));
+        resp.sendRedirect("/project/pages/user/student.html");
+        };
+
 }

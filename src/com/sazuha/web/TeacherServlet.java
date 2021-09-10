@@ -6,8 +6,10 @@ import com.sazuha.pojo.Course;
 import com.sazuha.pojo.Students;
 import com.sazuha.pojo.Teacher;
 import com.sazuha.service.CourseService;
+import com.sazuha.service.StudentService;
 import com.sazuha.service.TeacherService;
 import com.sazuha.service.impl.CourseServiceImpl;
+import com.sazuha.service.impl.StudentServiceImpl;
 import com.sazuha.service.impl.TeacherServiceImpl;
 
 import javax.servlet.ServletException;
@@ -70,4 +72,13 @@ public class TeacherServlet extends BaseServlet{
         teacherService.isExistCourse(id);
         resp.sendRedirect("/project/pages/user/teacher/teacher.html");
     }
+
+    protected void changePassword(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Teacher teacher = (Teacher) req.getSession().getAttribute("user");
+        TeacherService teacherService = new TeacherServiceImpl();
+
+        teacherService.changePassword(teacher.getId(),req.getParameter("password"),req.getParameter("newPassword"));
+        resp.sendRedirect("/project/pages/user/teacher/teacher.html");
+    };
+
 }
