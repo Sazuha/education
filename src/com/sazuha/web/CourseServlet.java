@@ -31,11 +31,16 @@ public class CourseServlet extends BaseServlet{
     }
 
     protected void chooseCourse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding("GBK");
         Students student = (Students) req.getSession().getAttribute("user");
         StudentService studentService = new StudentServiceImpl();
         System.out.println(student);
 
         int id = Integer.parseInt(req.getParameter("id"));
+        if(student.getCou1()==id||student.getCou2()==id){
+            resp.getWriter().print("<script>alert('无法重复选课');window.location.href='/project/pages/user/student.html'</script>");
+            return;
+        }
         Course course = courseService.searchCourseById(id);
         if(course.getStunum()<course.getMaxnum()){
             if(studentService.chooseCourse(student.getId(),id)==-1){
