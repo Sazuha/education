@@ -42,7 +42,7 @@ public class CourseServlet extends BaseServlet{
                 System.out.println("失败");
             }else{
                 courseService.chooseCourse(id);
-                req.getSession().setAttribute("user",studentService.studentLogin(new Students(student.getId(),null,student.getPassword(),0,0)));
+                req.getSession().setAttribute("user",studentService.studentLogin(new Students(student.getId(),null,student.getPassword(),0,0, student.getClassid())));
             }
         }else{
             System.out.println("人数已满");
@@ -62,7 +62,7 @@ public class CourseServlet extends BaseServlet{
                 System.out.println("失败");
             }else{
                 courseService.doNotChooseCourse(id);
-                req.getSession().setAttribute("user",studentService.studentLogin(new Students(student.getId(),null,student.getPassword(),0,0)));
+                req.getSession().setAttribute("user",studentService.studentLogin(new Students(student.getId(),null,student.getPassword(),0,0, student.getClassid())));
             }
         }else{
             System.out.println("失败");

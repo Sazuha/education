@@ -31,7 +31,7 @@ public class StudentsServlet extends BaseServlet {
         int usertype = Integer.parseInt(req.getParameter("usertype"));
 
         switch (usertype){
-            case 0:Students loginUser = studentService.studentLogin(new Students(id,null,password,0,0));
+            case 0:Students loginUser = studentService.studentLogin(new Students(id,null,password,0,0,0));
                 if(loginUser==null){
                     System.out.println("用户名或密码错误");
                     resp.setCharacterEncoding("GBK");
@@ -80,7 +80,7 @@ public class StudentsServlet extends BaseServlet {
                 System.out.println("失败");
             }else{
                 courseService.doNotChooseCourse(id);
-                req.getSession().setAttribute("user",studentService.studentLogin(new Students(student.getId(),null,student.getPassword(),0,0)));
+                req.getSession().setAttribute("user",studentService.studentLogin(new Students(student.getId(),null,student.getPassword(),0,0,student.getClassid())));
             }
         }else{
             System.out.println("失败");

@@ -15,8 +15,6 @@ public class ServiceTest {
     public void testService(){
         StudentService studentService = new StudentServiceImpl();
 
-        System.out.println(studentService.studentLogin(new Students(1,"stu1","11111111",0,0)));
-        Students loginUser = studentService.studentLogin(new Students(1,"stu1","11111111",0,0));
-        System.out.println(loginUser);
+
     }
 }

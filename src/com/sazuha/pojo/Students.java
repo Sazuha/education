@@ -9,13 +9,16 @@ public class Students {
     private String password;
     private int cou1;
     private int cou2;
+    private int classid;
 
-    public Students(Integer id, String username, String password, int cou1, int cou2) {
+
+    public Students(Integer id, String username, String password, int cou1, int cou2, int classid) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.cou1 = cou1;
         this.cou2 = cou2;
+        this.classid = classid;
     }
 
     public Integer getId() {
@@ -50,6 +53,7 @@ public class Students {
                 ", password='" + password + '\'' +
                 ", cou1=" + cou1 +
                 ", cou2=" + cou2 +
+                ", classid=" + classid +
                 '}';
     }
 
@@ -70,6 +74,14 @@ public class Students {
 
     public void setCou2(int cou2) {
         this.cou2 = cou2;
+    }
+
+    public int getClassid() {
+        return classid;
+    }
+
+    public void setClassid(int classid) {
+        this.classid = classid;
     }
 }
 

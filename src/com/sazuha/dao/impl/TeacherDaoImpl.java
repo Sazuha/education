@@ -38,4 +38,28 @@ public class TeacherDaoImpl extends BaseDao implements TeacherDao {
             return -1;
         }
     }
+
+    @Override
+    public int addTeacher(Teacher teacher) {
+        String sql = "insert into t_teacher (name,password) values(?,?)";
+        return update(sql,teacher.getName(),teacher.getPassword());
+    }
+
+    @Override
+    public int delTeacher(int id) {
+        String sql = "delete from t_teacher where id=?";
+        return update(sql,id);
+    }
+
+    @Override
+    public int updateTeacher(Teacher teacher) {
+        String sql = "update t_teacher set name=?,password=? where id=?";
+        return update(sql,teacher.getName(),teacher.getPassword(),teacher.getId());
+    }
+
+    @Override
+    public List<Teacher> listTeacher() {
+        String sql = "select * from t_teacher";
+        return search(Teacher.class,sql);
+    }
 }

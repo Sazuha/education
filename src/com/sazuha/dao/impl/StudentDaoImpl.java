@@ -77,4 +77,34 @@ public class StudentDaoImpl extends BaseDao implements StudentsDao {
             studentDoNotChooseClass(students.get(i).getId(),courseId);
         }
     }
+
+    @Override
+    public int addStudent(Students students) {
+        String sql = "insert into t_students (username,password,cou1,cou2,classid) values(?,?,0,0,?)";
+        return update(sql,students.getUsername(),students.getPassword(),students.getClassid());
+    }
+
+    @Override
+    public int delStudent(int id) {
+        String sql = "delete from t_students where id=?";
+        return update(sql,id);
+    }
+
+    @Override
+    public int updateStudent(Students students) {
+        String sql = "update t_students set username=?,password=?,cou1=?,cou2=?,classid=? where id=?";
+        return update(sql,students.getUsername(),students.getPassword(),students.getCou1(),students.getCou2(),students.getClassid(),students.getId());
+    }
+
+    @Override
+    public List<Students> listStudents() {
+        String sql = "select * from t_students";
+        return search(Students.class,sql);
+    }
+
+    @Override
+    public List<Students> listStudentsByClass(int id) {
+        String sql = "select * from t_students where classid=?";
+        return search(Students.class,sql,id);
+    }
 }

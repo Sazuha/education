@@ -2,6 +2,8 @@ package com.sazuha.dao;
 
 import com.sazuha.pojo.Students;
 
+import java.util.List;
+
 /**
  * @author Sazuha
  */
@@ -44,5 +46,40 @@ public interface StudentsDao {
      * @param courseId
      */
     public void isExist(int courseId);
+
+    /**
+     * 添加学生
+     * @param students
+     * @return
+     */
+    public int addStudent(Students students);
+
+    /**
+     * 删除学生
+     * @param id
+     * @return
+     */
+    public int delStudent(int id);
+
+    /**
+     * 修改学生
+     * @param students
+     * @return
+     */
+    public int updateStudent(Students students);
+
+    /**
+     * 列出所有
+     * @return
+     */
+    public List<Students> listStudents();
+
+    /**
+     * 班级学生列出
+     * @param id
+     * @return
+     */
+    public List<Students> listStudentsByClass(int id);
+
 
 }
