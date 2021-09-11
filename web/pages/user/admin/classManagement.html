@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理</title>
+    <base href="http://localhost:8080/project/">
+    <script type="text/javascript" src="script/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $(document).ready(function (){
+                $.ajax({
+                    url:"http://localhost:8080/project/adminServlet",
+                    data:"action=listClass",
+                    type:"POST",
+                    dataType:"json",
+                    success:function(data){
+                        let classes = data;
+                        for(let i in classes){
+                            let class_ = classes[i];
+                            let td1 = $("<td>"+class_.id+"</td>");
+                            let td2 = $("<td>"+class_.className+"</td>");
+                            let td3 = $("<td><form method='POST' action='adminServlet'><input type='hidden' name='action' value='intoClass'><input type='hidden' name='id' value='"+class_.id+"'><input type='submit' value='进入'></form></td>");
+                            let td4 = $("<td><form method='POST' action='adminServlet'><input type='hidden' name='action' value='delClass'><input type='hidden' name='id' value='"+class_.id+"'><input type='submit' value='删除'></form></td>");
+                            let tr = $("<tr></tr>");
+                            $(tr).append(td1).append(td2).append(td3).append(td4);
+                            $("#tab").append(tr)
+                        }
+                    }
+                })
+            })
+        });
+
+    </script>
+</head>
+<body>
+<a href="pages/user/admin/admin.html">返回</a>
+<a href="/project/pages/user/admin/addClass.html">添加班级</a>
+<table id="tab">
+    <tr>
+        <td>ID</td>
+        <td>班级</td>
+        <td>进入</td>
+        <td>删除</td>
+    </tr>
+</table>
+</body>
+</html>

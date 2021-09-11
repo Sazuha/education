@@ -1,6 +1,7 @@
 package com.sazuha.service;
 
 import com.sazuha.pojo.Admin;
+import com.sazuha.pojo.Class_;
 import com.sazuha.pojo.Students;
 import com.sazuha.pojo.Teacher;
 
@@ -86,4 +87,38 @@ public interface AdminService {
      * @return
      */
     public List<Teacher> listTeacher();
+
+    /**
+     * 添加班级
+     * @param class_
+     * @return
+     */
+    public int addClass(Class_ class_);
+
+    /**
+     * 修改班级
+     * @param class_
+     * @return
+     */
+    public int updateClass(Class_ class_);
+
+    /**
+     * 删除班级
+     * @param id
+     * @return
+     */
+    public int delClass(int id);
+
+    /**
+     * 班级
+     * @param id
+     * @return
+     */
+    public Class_ searchClass(int id);
+
+    /**
+     * 列出所有
+     * @return
+     */
+    public List<Class_> listClass();
 }

@@ -43,7 +43,7 @@ public class StudentsServlet extends BaseServlet {
                     resp.getWriter().print("<script>alert('登录成功');window.location.href='/project/pages/user/student.html'</script>");
                 }break;
             case 1:req.getRequestDispatcher("/teacherServlet?action=login").forward(req,resp);break;
-            case 2:break;
+            case 2:req.getRequestDispatcher("/adminServlet?action=login").forward(req,resp);break;
         }
 
     }

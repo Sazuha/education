@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理</title>
+    <base href="http://localhost:8080/project/">
+    <script type="text/javascript" src="script/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $(document).ready(function (){
+                $.ajax({
+                    url:"http://localhost:8080/project/adminServlet",
+                    data:"action=listStudent",
+                    type:"POST",
+                    dataType:"json",
+                    success:function(data){
+                        let students = data;
+                        for(let i in students){
+                            let student = students[i];
+                            let td1 = $("<td>"+student.id+"</td>");
+                            let td2 = $("<td>"+student.username+"</td>");
+                            let td3 = $("<td>"+student.cou1+"</td>");
+                            let td4 = $("<td>"+student.cou2+"</td>");
+                            let td5 = $("<td><form method='POST' action='adminServlet'><input type='hidden' name='action' value='delStudent'><input type='hidden' name='id' value='"+student.id+"'><input type='submit' value='删除'></form></td>");
+                            let tr = $("<tr></tr>");
+                            $(tr).append(td1).append(td2).append(td3).append(td4).append(td5);
+                            $("#tab").append(tr)
+                        }
+                    }
+                })
+            })
+        });
+
+    </script>
+</head>
+<body>
+<a href="pages/user/admin/classManagement.html">返回</a>
+<a href="/project/pages/user/admin/addStudent.html">添加学生</a>
+<table id="tab">
+    <tr>
+        <td>ID</td>
+        <td>学生</td>
+        <td>课程1</td>
+        <td>课程2</td>
+        <td>删除</td>
+    </tr>
+</table>
+</body>
+</html>

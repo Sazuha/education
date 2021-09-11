@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加教师</title>
+    <base href="http://localhost:8080/project/">
+</head>
+<body>
+    <a href="/project/pages/user/admin/teacherManagement.html">返回</a>
+    <form method="post" action="adminServlet">
+        <table>
+            <tr>
+                <td>教师：</td>
+                <td><input name="name" type="text"></td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input name="password" type="password"></td>
+            </tr>
+            <tr>
+                <td><input type="hidden" name="action" value="addTeacher"></td>
+                <td><input type="submit" value="确认"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
