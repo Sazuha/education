@@ -34,7 +34,6 @@ public class CourseServlet extends BaseServlet{
         resp.setCharacterEncoding("GBK");
         Students student = (Students) req.getSession().getAttribute("user");
         StudentService studentService = new StudentServiceImpl();
-        System.out.println(student);
 
         int id = Integer.parseInt(req.getParameter("id"));
         if(student.getCou1()==id||student.getCou2()==id){
@@ -58,7 +57,6 @@ public class CourseServlet extends BaseServlet{
     protected void doNotChooseCourse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Students student = (Students) req.getSession().getAttribute("user");
         StudentService studentService = new StudentServiceImpl();
-        System.out.println(student);
 
         int id = Integer.parseInt(req.getParameter("id"));
         Course course = courseService.searchCourseById(id);
